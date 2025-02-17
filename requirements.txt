@@ -1,0 +1,14 @@
+langchain
+PyPDF2
+pypdf
+langchain-community
+langchain-google-genai
+arxiv
+pymupdf
+google-search-results
+streamlit
+streamlit_pdf_viewer
+faiss-cpu
+sentence_transformers
+pdf2image
+gemini_api
