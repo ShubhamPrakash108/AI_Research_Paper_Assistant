@@ -1,98 +1,132 @@
 # 🧠 AI Research Assistant
 
-## 📄 Project Overview
-This project is a comprehensive AI-powered research assistant designed to aid academic researchers in exploring research papers, identifying essential prerequisite works, evaluating the difficulty of reference papers, and providing an interactive platform to query documents.
+![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)
 
-The system leverages Google Gemini LLM models and various LangChain utilities to automate literature analysis, paper evaluation, and document querying.
+A comprehensive AI-powered assistant designed to help researchers navigate the complex world of academic papers.
 
-## 🌟 Features
-- ✅ **Prerequisite Paper Prediction**: Identify prerequisite research papers needed to understand a target paper.
-- ✅ **Paper Evaluation and Download**: Evaluate the relevance and difficulty level of suggested papers and download them from arXiv.
-- ✅ **Interactive Paper Exploration**: Search for related videos, blogs, and interactively query the content of research papers.
-- ✅ **Question & Answer Interface**: Ask questions about research documents and receive context-aware responses.
+## 🌟 Overview
 
-## 🛠️ Components
+This project creates an intelligent research companion that helps academics:
+- Discover prerequisite papers needed to understand complex research
+- Evaluate and organize papers by difficulty level
+- Interactively explore paper content through a user-friendly interface
+- Ask questions about research documents and receive context-aware answers
 
-### 1️⃣ A1_reference_predictor.py
-- 📝 Extracts text from a target research paper PDF.
-- ✂️ Splits the content into chunks and queries the Gemini model to suggest prerequisite research papers.
-- 🗃️ Outputs the results to `Research_Papers_DB.json` after deduplication.
+The system leverages Google's Gemini LLM and various LangChain utilities to provide a seamless research experience.
 
-### 2️⃣ A2_paper_check.py
-- 🗂️ Loads the prerequisite paper suggestions from `Research_Papers_DB.json`.
-- 🔍 Validates the relevance of each suggested paper with respect to the target paper using the Gemini model.
-- 📥 Downloads validated papers from arXiv.
-- 🏷️ Evaluates the difficulty level (Beginner, Intermediate, Expert) of each downloaded paper.
-- 🗄️ Renames and organizes the papers based on difficulty level.
+## 🚀 Key Features
 
-### 3️⃣ A3_individiual_paper_Explorer.py
-- 🖥️ Streamlit-based interactive app.
-- 📄 Allows users to select and view PDF papers.
-- 🔎 Generates search queries for YouTube videos and academic blogs related to the paper.
-- 🧠 Embeds the content into FAISS for document querying.
-- 💬 Chat interface to interact with paper content using the Gemini model.
+### 📚 Prerequisite Paper Prediction
+Automatically identifies foundational papers needed to understand a target paper, making literature review more efficient.
 
-### 4️⃣ A4_ques_and_ans.py
-- 🖥️ Streamlit-based document Q&A system.
-- 📄 Embeds all target and reference papers into FAISS.
-- ❓ Enables users to query documents with questions and receive context-driven answers.
-- 📝 Displays conversation history and allows downloading it as a text file.
+### 📊 Paper Evaluation & Organization
+- Assesses paper relevance to your target research
+- Evaluates difficulty levels (Beginner, Intermediate, Expert)
+- Downloads papers from arXiv
+- Organizes them by difficulty for a structured learning path
 
-## ⚙️ Setup
-### 📋 Prerequisites
-- 🐍 Python 3.8+
-- 📦 Install required packages:
-```bash
-pip install -r requirements.txt
-```
+### 🔍 Interactive Exploration
+- View PDFs directly in the app
+- Find related YouTube videos and academic blogs
+- Query specific content within papers
+- Chat interface powered by Gemini
 
+### ❓ Document Q&A System
+- Ask questions about your research documents
+- Get answers with relevant context
+- Save conversation history for later reference
 
-### 🔑 API Keys
-Ensure you have multiple free Google Gemini API keys and a YouTube API key. Replace the placeholder values in the following sections in all scripts:
+## 🛠️ System Components
+
+### Core Modules
+
+| Module | Functionality |
+|--------|---------------|
+| **A1_reference_predictor.py** | Extracts text from target paper, suggests prerequisites |
+| **A2_paper_check.py** | Validates relevance, downloads papers, evaluates difficulty |
+| **A3_individiual_paper_Explorer.py** | Interactive Streamlit app for paper exploration |
+| **A4_ques_and_ans.py** | Document Q&A system with conversation history |
+
+## 📋 Setup Instructions
+
+### Prerequisites
+- Python 3.8+
+- Required packages:
+  ```bash
+  pip install streamlit langchain google-api-python-client arxiv
+  ```
+
+### API Keys
+You'll need:
+- Multiple free Google Gemini API keys
+- YouTube API key (for video search functionality)
+
+Replace placeholders in the scripts:
 ```python
 GEMINI_API_KEYS = ["YOUR_GEMINI_API_KEY_1", "YOUR_GEMINI_API_KEY_2", ...]
-YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY" # In A3_individiual_paper_Explorer.py
+YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY"  # In A3_individiual_paper_Explorer.py
 ```
 
-### 📄 Target Research Paper
-📂 **Place the actual research paper in PDF format inside the `target_RP/` folder.**
+### Folder Structure Setup
+Create these folders before running:
+```
+├── target_RP/                     # For your target research paper
+├── reference_research_papers/     # Where prerequisite papers will be stored
+```
 
-## ▶️ Usage
-### 1️⃣ Prerequisite Paper Prediction
+Place your research paper (PDF format) in the `target_RP/` folder.
+
+## 🚀 Usage Guide
+
+### 1. Identify Prerequisite Papers
 ```bash
 python A1_reference_predictor.py
 ```
-### 2️⃣ Paper Validation and Difficulty Evaluation
+This generates `Research_Papers_DB.json` with suggested prerequisite papers.
+
+### 2. Validate and Organize Papers
 ```bash
 python A2_paper_check.py
 ```
-### 3️⃣ Interactive Paper Exploration
+This downloads relevant papers from arXiv and organizes them by difficulty.
+
+### 3. Explore Papers Interactively
 ```bash
 streamlit run A3_individiual_paper_Explorer.py
 ```
-### 4️⃣ Document Q&A
+Use the web interface to view papers, find related content, and query paper content.
+
+### 4. Ask Questions About Your Research
 ```bash
 streamlit run A4_ques_and_ans.py
 ```
+Use the Q&A interface to ask questions about all your documents.
 
-## 📂 Folder Structure
+## 📂 Project Structure
+
 ```
 .
-├── target_RP/                     # 📄 Target research paper PDF
-├── reference_research_papers/     # 📄 Downloaded prerequisite papers
-├── Research_Papers_DB.json        # 📜 Suggested prerequisite papers
-├── cleaned_filtered_papers.json   # ✅ Validated prerequisite papers
-├── A1_reference_predictor.py
-├── A2_paper_check.py
-├── A3_individiual_paper_Explorer.py
-├── A4_ques_and_ans.py
-└── target_paper.json               # 🗃️ JSON storing the title of the target paper
+├── target_RP/                      # Target research paper PDF
+├── reference_research_papers/      # Downloaded prerequisite papers
+├── Research_Papers_DB.json         # Suggested prerequisite papers
+├── cleaned_filtered_papers.json    # Validated prerequisite papers
+├── A1_reference_predictor.py       # Prerequisite prediction script
+├── A2_paper_check.py               # Paper validation script
+├── A3_individiual_paper_Explorer.py # Interactive explorer app
+├── A4_ques_and_ans.py              # Q&A system app
+└── target_paper.json               # Stores target paper title
 ```
 
-## 📝 Output Files
-- 📄 `output.json`: Raw extracted paper titles.
-- 📜 `Research_Papers_DB.json`: Deduplicated paper titles.
-- ✅ `filtered_papers.json`: Filtered essential prerequisite papers.
-- 📑 `cleaned_filtered_papers.json`: Cleaned and validated paper titles.
-- 📂 Downloaded PDFs stored in `reference_research_papers/`.
+## 📄 Output Files
 
+| File | Description |
+|------|-------------|
+| `output.json` | Raw extracted paper titles |
+| `Research_Papers_DB.json` | Deduplicated paper titles |
+| `filtered_papers.json` | Filtered essential prerequisite papers |
+| `cleaned_filtered_papers.json` | Cleaned and validated paper titles |
+| Downloaded PDFs | Stored in `reference_research_papers/` |
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
