@@ -53,7 +53,7 @@ Automatically identifies foundational papers needed to understand a target paper
 - Python 3.8+
 - Required packages:
   ```bash
-  pip install streamlit langchain google-api-python-client arxiv
+  pip install -r requirements.txt
   ```
 
 ### API Keys
