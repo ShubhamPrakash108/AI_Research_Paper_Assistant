@@ -13,8 +13,7 @@ provided_title = data["provided_title"]
 
 print(provided_title)
 
-GEMINI_API_KEYS = ["AIzaSyCzTWJ5ZpkTGcnfabAXQjOSvMqrcwG7onk","AIzaSyDqJBsNCbJEHp80nXTS4BzNOMD7e3KSQ10","AIzaSyBPgJh_sRwKLAz0jR2EpAIy-F2zmKPR2qQ","AIzaSyAYr05BjrCqRjNTrAvv2a50yPoe1Cpgw4A","AIzaSyCchpkS1qxo2fqwT15H7BGd-41Tn-n9M24","AIzaSyDfokL9HczAzRasWl_GNtT41E0gA2jkUJU","AIzaSyD13qlRA23cAWjHPkb1uBaNdCUpBuPxoI0","AIzaSyCRtKweOh3JPH8Gn1ACMrejuiQIW0N3RsY","AIzaSyBlUyW5_eKud705mqzfo_athWNF-UgGlJY","AIzaSyDxM-jtsl6DF4lm67lFWIumRXQACeZcHqo","AIzaSyAteEW-4HLXkAudnDSKudFEyVP6rN9FT2c"]
-
+GEMINI_API_KEYS = ["","","","","","","","","","",""]
 
 with open("Research_Papers_DB.json", "r") as file:
     papers = json.load(file)
