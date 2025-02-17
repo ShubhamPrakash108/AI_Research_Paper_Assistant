@@ -1,10 +1,16 @@
 # 🧠 AI Research Assistant
 
 ![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)
+![LangChain](https://img.shields.io/badge/Built%20with-LangChain-green)
+![Gemini](https://img.shields.io/badge/Powered%20by-Gemini-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
+
+
 
 A comprehensive AI-powered assistant designed to help researchers navigate the complex world of academic papers.
 
 ## 🌟 Overview
+
 
 This project creates an intelligent research companion that helps academics:
 - Discover prerequisite papers needed to understand complex research
@@ -17,6 +23,8 @@ The system leverages Google's Gemini LLM and various LangChain utilities to prov
 ## 🚀 Key Features
 
 ### 📚 Prerequisite Paper Prediction
+
+
 Automatically identifies foundational papers needed to understand a target paper, making literature review more efficient.
 
 ### 📊 Paper Evaluation & Organization
@@ -25,16 +33,23 @@ Automatically identifies foundational papers needed to understand a target paper
 - Downloads papers from arXiv
 - Organizes them by difficulty for a structured learning path
 
+
+
 ### 🔍 Interactive Exploration
+
 - View PDFs directly in the app
 - Find related YouTube videos and academic blogs
 - Query specific content within papers
 - Chat interface powered by Gemini
 
+<br clear="left">
+
 ### ❓ Document Q&A System
 - Ask questions about your research documents
 - Get answers with relevant context
 - Save conversation history for later reference
+
+
 
 ## 🛠️ System Components
 
@@ -47,6 +62,8 @@ Automatically identifies foundational papers needed to understand a target paper
 | **A3_individiual_paper_Explorer.py** | Interactive Streamlit app for paper exploration |
 | **A4_ques_and_ans.py** | Document Q&A system with conversation history |
 
+
+
 ## 📋 Setup Instructions
 
 ### Prerequisites
@@ -58,14 +75,26 @@ Automatically identifies foundational papers needed to understand a target paper
 
 ### API Keys
 You'll need:
-- Multiple free Google Gemini API keys
+- Google Gemini API key(s)
 - YouTube API key (for video search functionality)
 
-Replace placeholders in the scripts:
+#### Important Note on API Rate Limits
+While you can use a single Gemini API key, this project makes frequent API calls that may hit Google's rate limits (typically 2-30 requests per minute depending on model version). To ensure smooth operation, the system supports using multiple API keys to work around these limitations:
+
 ```python
+# You can provide a single key:
+GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
+
+# Or multiple keys to handle rate limiting:
 GEMINI_API_KEYS = ["YOUR_GEMINI_API_KEY_1", "YOUR_GEMINI_API_KEY_2", ...]
-YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY"  # In A3_individiual_paper_Explorer.py
+
+# YouTube API is used for video search in A3_individiual_paper_Explorer.py
+YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY"
 ```
+
+The system will automatically rotate between available API keys to balance the request load.
+
+
 
 ### Folder Structure Setup
 Create these folders before running:
@@ -77,6 +106,8 @@ Create these folders before running:
 Place your research paper (PDF format) in the `target_RP/` folder.
 
 ## 🚀 Usage Guide
+
+
 
 ### 1. Identify Prerequisite Papers
 ```bash
@@ -96,11 +127,14 @@ streamlit run A3_individiual_paper_Explorer.py
 ```
 Use the web interface to view papers, find related content, and query paper content.
 
+
+
 ### 4. Ask Questions About Your Research
 ```bash
 streamlit run A4_ques_and_ans.py
 ```
 Use the Q&A interface to ask questions about all your documents.
+
 
 ## 📂 Project Structure
 
@@ -127,6 +161,15 @@ Use the Q&A interface to ask questions about all your documents.
 | `cleaned_filtered_papers.json` | Cleaned and validated paper titles |
 | Downloaded PDFs | Stored in `reference_research_papers/` |
 
+
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+
+
+## 📜 Attribution
+
+If you use this project, a shoutout would be awesome! 🙌 Credit helps it grow. 🚀
+
